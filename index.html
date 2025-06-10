@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUMIT JACKPOT MATCH [ POINT ]</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Basic CSS reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Glassmorphism background */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            /* Animated gradient */
+            background: linear-gradient(-45deg, #6a11cb, #2575fc, #00d2ff, #a8ff78);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Bubbles */
+        .bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            animation: rise 10s infinite ease-in;
+        }
+
+        .bubble:nth-child(1) {
+            width: 40px;
+            height: 40px;
+            left: 10%;
+            animation-duration: 8s;
+        }
+
+        .bubble:nth-child(2) {
+            width: 20px;
+            height: 20px;
+            left: 20%;
+            animation-duration: 5s;
+            animation-delay: 1s;
+        }
+
+        .bubble:nth-child(3) {
+            width: 50px;
+            height: 50px;
+            left: 35%;
+            animation-duration: 7s;
+            animation-delay: 2s;
+        }
+
+        .bubble:nth-child(4) {
+            width: 80px;
+            height: 80px;
+            left: 50%;
+            animation-duration: 11s;
+            animation-delay: 0s;
+        }
+
+        .bubble:nth-child(5) {
+            width: 35px;
+            height: 35px;
+            left: 55%;
+            animation-duration: 6s;
+            animation-delay: 1s;
+        }
+
+        .bubble:nth-child(6) {
+            width: 45px;
+            height: 45px;
+            left: 65%;
+            animation-duration: 8s;
+            animation-delay: 3s;
+        }
+
+        .bubble:nth-child(7) {
+            width: 25px;
+            height: 25px;
+            left: 75%;
+            animation-duration: 7s;
+            animation-delay: 2s;
+        }
+
+        .bubble:nth-child(8) {
+            width: 80px;
+            height: 80px;
+            left: 80%;
+            animation-duration: 6s;
+            animation-delay: 1s;
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -100px;
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(100px);
+            }
+            100% {
+                bottom: 1080px;
+                transform: translateX(-200px);
+            }
+        }
+
+        /* Glassmorphism container */
+        .glass-container {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 40px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        /* Container styling */
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        /* Logo styling */
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: #fff url('logo.jpg') no-repeat center center;
+            background-size: cover;
+            border: 3px solid #ffdf00;
+        }
+
+        /* Title styling */
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            color: #ffdf00; /* Base color */
+            background: linear-gradient(90deg, 
+                #ffdf00, 
+                #ff9900, 
+                #ff0066, 
+                #9900ff, 
+                #00ccff, 
+                #ffdf00);
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 100% 0;
+            }
+            100% {
+                background-position: 0% 0;
+            }
+        }
+
+        /* Timer styling */
+        #timer {
+            font-size: 1.5em;
+            margin-top: 15px;
+            color: #00ff99;
+        }
+
+        /* Button styling */
+        .button-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffdf00;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .button img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .button:hover {
+            transform: scale(1.2);
+        }
+
+        /* Keyframe animation for buttons */
+        .button-container .button {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+/* Blinking animation */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Apply blinking animation to timer */
+#timer {
+  font-size: 1.5em;
+  margin-top: 15px;
+  color: #00ff99;
+  animation: blink 1s infinite;
+}
+
+/* Button Styling */
+.button-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button {
+  width: 180px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0088cc;
+  border-radius: 25px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  padding: 0 15px; /* Added padding for better spacing */
+}
+
+.button a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.button img {
+  width: 31px;
+  height: 30px;
+  margin-right: 10px; /* Adjusted margin */
+}
+
+.button span {
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+.button:hover {
+  background-color: #0077b3;
+  transform: scale(1.05);
+  text-decoration: none; /* Ensures no underline on hover */
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+/* Pulse Animation */
+.button-container .telegram-button {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+    /* Subscriber count styling */
+    .subscriber-count {
+        font-size: 1.5em;
+        margin-top: 15px;
+        color: #00ff99;
+        font-weight: bold;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="container">
+        <div class="logo"></div>
+        <h1>SUMIT JACKPOT MATCH [ POINT ]</h1>
+
+        <!-- Timer Display -->
+        <div class="subscriber-count" id="subscriberCounter">0 Subscribers</div>
+
+        <!-- Social Media Buttons -->
+<div class="button-container">
+  <a href="https://t.me/+ht0Ez418A8EyMjhl" class="button telegram-button" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1200px-Telegram_logo.svg.png" alt="Telegram">
+    <span>Join Now</span>
+  </a>
+</div>
+              
+        <div class="button-container">
+            <!-- <div class="button">
+                <a href="https://www.instagram.com/ranaprediction_/profilecard/?igsh=MWk1NnpoenVtaTk3MA=="
+                    target="_blank">
+                    <img src="https://png.pngtree.com/png-clipart/20230401/original/pngtree-three-dimensional-instagram-icon-png-image_9015419.png"
+                        alt="Instagram">
+                  <span>Follow Now</span>
+                </a>
+            </div> -->
+        </div>
+        <br />
+
+        <!-- Description -->
+        <div class="main-contriner">
+            ( Most Popular Cricket Prediction Analyst )<br>
+            Toss + Match + Session Prediction 🔊😍<br>
+            <!-- 📊Founder of the cricket trading💸 -->
+        </div><br />
+
+    </div>
+
+    <!-- <script>
+        let timeLeft = 20;
+        const timerDisplay = document.getElementById('timer');
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timerDisplay.textContent = timeLeft + 's';
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                window.location.href = 'https://t.me/+WmUPWdBmJ402ZTdl';
+            }
+        }, 1000);
+    </script> -->
+
+    <script>
+        // Animated counter
+        const counterElement = document.getElementById('subscriberCounter');
+        const targetCount = 33241;
+        const duration = 3000; // 3 seconds
+        const frameDuration = 1000 / 60; // 60 frames per second
+        const totalFrames = Math.round(duration / frameDuration);
+        const easeOutQuad = t => t * (2 - t);
+        
+        let frame = 0;
+        const counter = setInterval(() => {
+            frame++;
+            const progress = easeOutQuad(frame / totalFrames);
+            const currentCount = Math.round(targetCount * progress);
+            
+            counterElement.textContent = currentCount.toLocaleString() + ' Subscribers';
+            
+            if (frame === totalFrames) {
+                clearInterval(counter);
+            }
+        }, frameDuration);
+
+        // Button pulse animation (your existing code)
+        const telegramButton = document.querySelector('.telegram-button');
+        setInterval(() => {
+            telegramButton.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                telegramButton.style.transform = 'scale(1)';
+            }, 500);
+        }, 1500);
+    </script>
+
+</body>
+
+</html>
